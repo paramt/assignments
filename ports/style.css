@@ -74,3 +74,13 @@ img{
     height: 200px;
 }
 
+a{
+    color: white; 
+    text-align: center;
+}
+
+a:hover{
+    color: #a3ceff;
+    text-decoration: underline;
+}
+
