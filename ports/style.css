@@ -19,6 +19,10 @@ body{
 
 .wrapper{
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .content{
@@ -49,4 +53,9 @@ p{
     font-size: 1em;
     color: white;
     text-decoration: none;
+}
+
+button{
+    background-color: transparent;
+    color: white;
 }
