@@ -27,12 +27,14 @@ body{
 
 .content{
     border-radius: 10px;
-    width: 50vw;
+    width: 1000px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: white;
+    margin: 150px 50px;
     padding: 10px;
 }
 
@@ -46,7 +48,7 @@ h2{
 }
 
 .subtitle{
-    color: gray;
+    color: #363636;
 }
 
 p{
@@ -55,7 +57,20 @@ p{
     text-decoration: none;
 }
 
-button{
+.navigate{
+    font-size: 3em;
     background-color: transparent;
     color: white;
+    outline: none;
+    border: none;
 }
+
+.navigate:hover{
+    color: gray;
+    cursor: pointer;
+}
+
+img{
+    height: 200px;
+}
+
