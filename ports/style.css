@@ -1,0 +1,52 @@
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #303f9f;
+}
+
+.main{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper{
+    width: 100%;
+}
+
+.content{
+    border-radius: 10px;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 10px;
+}
+
+h1{
+    font-size: 4em;
+    color: white;
+}
+
+h2{
+    font-size: 3em;
+}
+
+.subtitle{
+    color: gray;
+}
+
+p{
+    font-size: 1em;
+    color: white;
+    text-decoration: none;
+}
