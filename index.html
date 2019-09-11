@@ -1,17 +1,41 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Assignments</title>
-    </head>
-    <body>
-        <h1>School</h1>
-        <p>These are all my computer-science related school assignments. To find my personal projects, visit <a href="https://www.param.me/projects">param.me/projects</a></p>
+  <head>
+    <title> {{ site.title }} </title>
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins|Open+Sans:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script defer src="{{site.baseurl}}/assets/js/script.js"></script>
+    {% include favicon.html %}
+    {% include meta.html %}
+  </head>
 
-        <h2>Ports</h2>
-        <h3>September 2019</h3>
-        <p>A website that lists common computer ports and their components, accompanied by an image.</p>
-    </body>
+  <body>
+    <div id="overlay"></div><div id="transition-overlay"></div>
+
+    <div class="container">
+      <h1>Assignments</h1>
+    </div>
+
+
+    <div class="timeline" id="timeline-highlight">
+      {% for project in site.data.projects %}
+        <div class="tcontainer {% cycle "left", "right" %}">
+          <div class="tcontent" onclick="window.open('{{ project.link }}')">
+            <h2>{{ project.title }}</h2>
+            <p class="light">{{ project.date }}</p>
+            <p>{{ project.desc || markdownify}}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="content">
+      {% include footer.html %}
+    </div>
+
+  </body>
 </html>
