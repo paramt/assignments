@@ -35,7 +35,7 @@ body{
     justify-content: center;
     background-color: white;
     margin: 150px 50px;
-    padding: 10px;
+    padding: 0 30px;
 }
 
 h1{
@@ -75,7 +75,7 @@ img{
 }
 
 a{
-    color: white; 
+    color: white;
     text-align: center;
     text-decoration: none;
 }
@@ -84,4 +84,3 @@ a:hover{
     color: #a3ceff;
     text-decoration: underline;
 }
-
