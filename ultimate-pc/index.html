@@ -17,7 +17,9 @@
     <body>
         <div class="main center">
             <h1>The Ultimate Machine</h1>
-            <p>My goal was to build a high-end gaming rig at a reasonable price. The parts that I picked should reflect this</p>
+            <p>My goal was to build a high-end gaming rig at a reasonable price. All prices are in USD <br>
+            <a href="https://github.com/paramt/assignments/tree/master/ultimate-pc">View code</a> |
+            <a href="https://pcpartpicker.com/list/XczXsk">View on pcpartpicker.com</a></p>
         </div>
 
         <div class="center">
@@ -32,8 +34,12 @@
 
                     <h3>{{ component.tech2 }}</h3>
                     <p>{{ component.tech1 }}</p>
+
+                    <h4><a href="{{component.link}}">Buy for {{ component.price }}</a></h4>
                 </div>
             {% endfor %}
+            <br>
+            <h2 style="font-size: 3em">Total: $1814.58</h2>
         </div>
     </body>
 </html>
