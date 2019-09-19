@@ -1,8 +1,8 @@
 {
     "CPU": [
-        "AMD Ryzen 5 3600X", 
-        "$238.90", 
-        "https://www.outletpc.com/bv9012.html?utm_source=bv9012&utm_medium=shopping%2Bengine&utm_campaign=pcpartpicker&utm_content=AMD%2B-%2BCPUs%20%28Processors%29%20%3E%20AMD%20AM4%2B&sscid=91k3_csmpp", 
+        "AMD Ryzen 5 3600X",
+        "$238.90",
+        "https://www.outletpc.com/bv9012.html?utm_source=bv9012&utm_medium=shopping%2Bengine&utm_campaign=pcpartpicker&utm_content=AMD%2B-%2BCPUs%20%28Processors%29%20%3E%20AMD%20AM4%2B&sscid=91k3_csmpp",
         "https://cdn.pcpartpicker.com/static/forever/images/product/c7baf2c9c9cc15ae23adb24c2f4316fc.256p.jpg",
         "I opted for an AMD chip because they typically provide better multi-threaded performance. While Intel does offer good chips, AMD offers the same specs at a much lower price. The processor has an above-average clock speed of 3.8GHz and is even overclockable up to 4.4GHz, although I will not be overclocking it since I don't have sufficient cooling. The processor has 6 cores, which means that the computer will be much better at multitasking and running concurrent tasks . The CPU fits into the AM4 socket on the motherboard.",
         "AMD's wraith spire cooling solution offers quiet cooling and offers RGB"
@@ -10,7 +10,7 @@
 
     "Motherboard":  [
         "MSI MPG X570 GAMING EDGE WIFI",
-        "$199.89", 
+        "$199.89",
         "https://www.outletpc.com/pa9687.html?utm_source=pa9687&utm_medium=shopping%2Bengine&utm_campaign=pcpartpicker&utm_content=MSI%2B-%2BzOOS&sscid=91k3_ehlq2",
         "https://s.yimg.com/aah/outletpc/msi-mpg-x570-gaming-edge-wifi-socket-am4-motherboard-10.jpg",
         "The MSI motherboard comes in an ATX form factor and has sufficient slots to fit all the other components in. It has an AM4 socket for the CPU, 4 RAM slots that support DDR4 memory, and even 3 M.2 slots. However, I will only be using 2 of the RAM slots and 1 M.2 slot. The motherboard also has onboard WiFi so I will not need a separate WiFi card.",
@@ -59,8 +59,5 @@
         "https://cdn.pcpartpicker.com/static/forever/images/product/2a2172d1f17661103de901f43d831187.1600.jpg",
         "The power supply provides 750 watts, which should be sufficient considering that the entire setup uses 404 watts in total. I chose to get a higher wattage power supply than I need because it is recommended to only use 50-60% of a power supply's capacity. My setup will be using 53% of the PSU's capacity.",
         "Some PSUs are more efficient than others. This PSU has an efficieny rating of 80+ which means that it is guaranteed to use 80% of its energy while only losing 20% as heat."
-    ],
-
-    ""
-    
+    ]
 }
