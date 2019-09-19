@@ -11,7 +11,7 @@ body{
 
 @keyframes fade{
     from {background-color: white}
-    to {background-color: #292929}
+    to {background-color: #12788c} /** #1a612d */
 }
 
 table{
@@ -22,8 +22,32 @@ h1{
     font-size: 4em;
 }
 
+a{
+    text-decoration: underline;
+    color: #a9caff;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #deebff;
+}
+
+h4 a{
+    color: #6393e0;
+}
+
+h4 a:hover{
+    color: #75aaf8;
+}
+
 .main{
     height: 100vh;
+}
+
+.main p{
+    width: 60vw;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 .center{
@@ -33,17 +57,19 @@ h1{
     flex-direction: column;
 }
 
-.box{
-    margin-top: 20px;
-}
-
 .box, .slideout {
     width: 80%;
     padding: 20px;
-    background-color: #dbdbdb;
+    background-color: #eee;
     color: #292929;
     border-radius: 0px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.box{
+    margin-top: 20px;
     cursor: pointer;
+    background-color: #dbdbdb;
 }
 
 .plusminus {
