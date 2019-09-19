@@ -1,0 +1,51 @@
+html{
+    font-family: 'Assistant', sans-serif;
+    color: white;
+}
+
+body{
+    animation-name: fade;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade{
+    from {background-color: white}
+    to {background-color: #292929}
+}
+
+table{
+    width: 100%;
+}
+
+h1{
+    font-size: 4em;
+}
+
+.main{
+    height: 100vh;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.box{
+    margin-top: 20px;
+}
+
+.box, .slideout {
+    width: 80%;
+    padding: 20px;
+    background-color: #dbdbdb;
+    color: #292929;
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+.plusminus {
+    float: right;
+}
