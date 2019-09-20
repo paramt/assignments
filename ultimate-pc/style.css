@@ -42,11 +42,11 @@ h4 a:hover{
 
 .main{
     height: 100vh;
+    text-align: center;
 }
 
 .main p{
     width: 60vw;
-    text-align: center;
     font-size: 1.5em;
 }
 
