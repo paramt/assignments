@@ -24,12 +24,12 @@ h1{
 
 a{
     text-decoration: underline;
-    color: #a9caff;
+    color: white;
 }
 
 a:hover{
     text-decoration: none;
-    color: #deebff;
+    color: #a9caff;
 }
 
 h4 a{
