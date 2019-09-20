@@ -26,13 +26,17 @@
                 </div>
 
                 <div class="slideout" style="display:none">
-                    <h3>{{ component.name }}</h3>
-                    <p>{{ component.description }}</p>
+                    <div>
+                        <h3>{{ component.name }}</h3>
+                        <p>{{ component.description }}</p>
 
-                    <h3>{{ component.tech2 }}</h3>
-                    <p>{{ component.tech1 }}</p>
+                        <h3>{{ component.tech2 }}</h3>
+                        <p>{{ component.tech1 }}</p>
 
-                    <h4><a href="{{component.link}}">Buy for {{ component.price }}</a></h4>
+                        <h4><a href="{{component.link}}">Buy for {{ component.price }}</a></h4>
+                    </div>
+                    
+                    <img src="{{ component.image }}">
                 </div>
             {% endfor %}
             <br>
