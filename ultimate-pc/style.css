@@ -11,7 +11,7 @@ body{
 
 @keyframes fade{
     from {background-color: white}
-    to {background-color: #12788c} /** #1a612d */
+    to {background-color: #eb4034} /** teal: #12788c, green: #1a612d */
 }
 
 table{
