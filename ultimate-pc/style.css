@@ -72,6 +72,19 @@ h4 a:hover{
     background-color: #dbdbdb;
 }
 
+.slideout{
+    display: flex;
+}
+
+.slideout div{
+    flex: 1;
+}
+
+.slideout img{
+    width: 300px;
+    height: 100%;
+}
+
 .plusminus {
     float: right;
 }
