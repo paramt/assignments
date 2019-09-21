@@ -4,19 +4,9 @@ html{
 }
 
 body{
-    animation-name: fade;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
+    background-color: #eb4034;
 }
 
-@keyframes fade{
-    from {background-color: white}
-    to {background-color: #eb4034} /** teal: #12788c, green: #1a612d */
-}
-
-table{
-    width: 100%;
-}
 
 h1{
     font-size: 4em;
