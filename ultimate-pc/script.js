@@ -7,10 +7,10 @@ $(document).ready(function() {
       }
       if ($(this).next(".slideout").is(':visible')) {
         $(this).next(".slideout").slideUp(300);
-        $(this).children(".plusminus").text('+');
+        $(this).find(".plusminus").text('+');
       } else {
         $(this).next(".slideout").slideDown(300);
-        $(this).children(".plusminus").text('-');
+        $(this).find(".plusminus").text('–');
       }
     });
   });
