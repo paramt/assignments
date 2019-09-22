@@ -7,7 +7,6 @@ body{
     background-color: #eb4034;
 }
 
-
 h1{
     font-size: 4em;
 }
@@ -52,7 +51,6 @@ h4 a:hover{
     padding: 20px;
     background-color: #eee;
     color: #292929;
-    border-radius: 0px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
