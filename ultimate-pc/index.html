@@ -21,7 +21,7 @@
 
         <div class="center">
             {% for component in site.data.components %}
-                <div class="box">
+                <div class="box disable-select">
                     <h2>{{ component.component }}<span class="plusminus">+</span></h2>
                 </div>
 
@@ -35,7 +35,7 @@
 
                         <h4><a href="{{component.link}}">Buy for {{ component.price }}</a></h4>
                     </div>
-                    
+
                     <img src="{{ component.image }}">
                 </div>
             {% endfor %}
