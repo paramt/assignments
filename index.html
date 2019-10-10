@@ -25,7 +25,7 @@
     <div class="timeline" id="timeline-highlight">
       {% for project in site.data.projects %}
         <div class="tcontainer {% cycle "left", "right" %}">
-          <div class="tcontent" onclick="window.open('{{ project.link }}')">
+          <div class="tcontent" onclick="window.open('{{ project.link }}', 'param_links')">
             <h2>{{ project.title }}</h2>
             <p class="light">{{ project.date }}</p>
             <p>{{ project.desc || markdownify}}</p>
