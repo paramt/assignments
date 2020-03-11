@@ -60,11 +60,6 @@ a:hover{
   color: white;
 }
 
-.tcontent:hover{
-  background-color: var(--hover-color);
-  cursor: pointer;
-}
-
 html, body, .container{
   height: 100%;
 }
