@@ -27,9 +27,14 @@
         <div class="tcontainer {% cycle "left", "right" %}">
           <div class="tcontent">
             <h2>{{ project.title }}</h2>
-            <p class="light"><a href="{{ project.link }}" target="param_links">View</a> | {{ project.date }}</p>
+            <p class="light">{{ project.date }}</p>
             <p>{{ project.desc || markdownify}}</p>
           </div>
+
+          <a class="link" href="{{ project.link }}" target="param_links">
+            View <i class="fas fa-angle-right"></i>
+          </a>
+
         </div>
       {% endfor %}
     </div>

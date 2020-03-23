@@ -235,8 +235,24 @@ html, body, .container{
   padding: 20px 30px;
   background-color: var(--foreground-color);
   position: relative;
-  border-radius: 15px;
+  border-radius: 15px 15px 0 0;
+}
+
+.link {
+  display: block;
+  border-radius: 0 0 15px 15px;
+  background-color: #0a0a0a;
+  width: 100%;
   margin-bottom: 60px;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 15px;
+}
+
+.link:hover {
+  background-color: #252525;
+
 }
 
 @media screen and (max-width: 600px) {
@@ -268,5 +284,9 @@ html, body, .container{
   /* Make all right containers behave like the left ones */
   .right {
     left: 0%;
+  }
+
+  .link {
+    font-size: 1.3em;
   }
 }
