@@ -9,14 +9,17 @@ class PlayerHand:
         self.hand.append(domino)
 
     def remove_domino(self, domino):
-        return self.hand.remove(domino)
+        if domino in self.hand:
+            return self.hand.remove(domino)
+        else:
+            return self.hand.remove(self._flip_domino(domino))
 
     def __str__(self):
         return ", ".join(self.hand)
 
     # Returns true if self.hand contains domino
     def contains(self, domino):
-        return domino in self.hand
+        return domino in self.hand or self._flip_domino(domino) in self.hand
 
     # Returns the highest double in a given hand
     # If no doubles exist, it returns the domino with the highest sum
@@ -41,3 +44,6 @@ class PlayerHand:
             return f"{highest_double}|{highest_double}"
         else:
             return highest_non_double_domino
+
+    def _flip_domino(self, domino):
+        return domino.split("|")[1] + "|" + domino.split("|")[0]
