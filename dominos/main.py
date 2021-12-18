@@ -67,6 +67,8 @@ if __name__ == "__main__":
 
                 elif current_hand.contains(domino):
                     if board.place_domino(domino):
+                        current_hand.remove_domino(domino)
+
                         if current_player == 1:
                             player1hand = current_hand
                             print(
