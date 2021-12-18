@@ -2,6 +2,7 @@ from os import system
 from CloudSave import CloudSave
 from GameBoard import GameBoard
 import Domino
+from PllayerHand import PlayerHand
 
 if __name__ == "__main__":
     print("Welcome to Dominos!\n")
@@ -29,14 +30,15 @@ if __name__ == "__main__":
             print("Dealing hands...")
 
             # Give 7 dominos to each player
-            player1hand = board.deal_hand(7)
-            player2hand = board.deal_hand(7)
+            player1hand = PlayerHand(board.deal_hand(7))
+            player2hand = PlayerHand(board.deal_hand(7))
             current_hand = []
 
-            domino1 = Domino.get_highest_domino(player1hand)
-            domino2 = Domino.get_highest_domino(player2hand)
+            domino1 = player1hand.get_highest_domino()
+            domino2 = player2hand.get_highest_domino()
+            compare_hands = PlayerHand([domino1, domino2])
 
-            if Domino.get_highest_domino([domino1, domino2]) == domino1:
+            if compare_hands.get_highest_domino() == domino1:
                 current_player = 1
                 current_hand = player1hand
                 print("Player 1 gets to go first because they have the highest domino")
@@ -63,7 +65,7 @@ if __name__ == "__main__":
                     # Implement drawing from deck
                     current_hand.append(board.draw_domino())
 
-                elif domino in current_hand:
+                elif current_hand.contains(domino):
                     if board.place_domino(domino):
                         if current_player == 1:
                             player1hand = current_hand
