@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
                 if domino.upper() == "DRAW":
                     # Implement drawing from deck
-                    current_hand.append(board.draw_domino())
+                    current_hand.add_domino(board.draw_domino())
 
                 elif current_hand.contains(domino):
                     if board.place_domino(domino):
