@@ -1,0 +1,88 @@
+from os import system
+from CloudSave import CloudSave
+from GameBoard import GameBoard
+import Domino
+
+if __name__ == "__main__":
+    print("Welcome to Dominos!\n")
+    while True:
+        print("A) Read the rules")
+        print("B) View the scoreboard")
+        print("C) Start a new game")
+        print("Press any other button to quit\n")
+        choice = input("Select an option: ")
+        print()
+
+        if choice.lower() == "a":
+            print("Each player will start with 7 dominos. The player with the highest double starts. In the case that no player has a double, the player with the domino that has the highest sum will start. Players will then take turns placing a domino in the center of the board. To place a domino, one of the sides must have a matching number to the center domino in play. If the player doesn't have a domino that meets this requirement, then they must draw another domino from the deck. Play continues until one of the players runs out of dominos.\n")
+            input("Press enter to continue\n")
+
+        elif choice.lower() == "b":
+            print("Loading scores...", end="\r")
+            save = CloudSave("Dominos Stats", "credentials.json")
+            save.display_scoreboard()
+            input("Press enter to continue\n")
+
+        elif choice.lower() == "c":
+            print("Setting up the game board...")
+            board = GameBoard()
+            print("Dealing hands...")
+
+            # Give 7 dominos to each player
+            player1hand = board.deal_hand(7)
+            player2hand = board.deal_hand(7)
+            current_hand = []
+
+            domino1 = Domino.get_highest_domino(player1hand)
+            domino2 = Domino.get_highest_domino(player2hand)
+
+            if Domino.get_highest_domino([domino1, domino2]) == domino1:
+                current_player = 1
+                current_hand = player1hand
+                print("Player 1 gets to go first because they have the highest domino")
+                print("Please pass the screen to player 1, then press enter")
+                input()
+
+            else:
+                current_player = 2
+                current_hand = player2hand
+                print("Player 2 gets to go first because they have the highest domino")
+                print("Please pass the screen to player 2, then press enter")
+                input()
+
+            while True:
+                print()
+                print(f"Player {current_player}'s turn: ")
+                print(f"Your hand: {current_hand}")
+
+                print(f"Current domino on the board: {board.domino}")
+                domino = input(
+                    "Enter the domino you would like to play or 'DRAW': ")
+
+                if domino.upper() == "DRAW":
+                    # Implement drawing from deck
+                    current_hand.append(board.draw_domino())
+
+                elif domino in current_hand:
+                    if board.place_domino(domino):
+                        if current_player == 1:
+                            player1hand = current_hand
+                            print(
+                                "Please pass the screen to player 2, then press enter", end="\r")
+                            input()
+                            current_player = 2
+                            current_hand = player2hand
+                        elif current_player == 2:
+                            player2hand = current_hand
+                            print(
+                                "Please pass the screen to player 1, then press enter", end="\r")
+                            input()
+                            current_player = 1
+                            current_hand = player1hand
+                    else:
+                        print("You can't place that domino on the board!")
+
+                else:
+                    print("You don't have that domino in your hand!")
+        else:
+            system.exit(0)
