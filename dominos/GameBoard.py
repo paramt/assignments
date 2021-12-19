@@ -17,7 +17,7 @@ class GameBoard:
         if not self.domino:
             self.domino = domino
             return True
-        elif self.domino.split("|")[0] == domino.split("|")[0] or self.domino.split("|")[0] == domino.split("|")[1] or self.domino.split("|")[1] == domino.split("|")[1]:
+        elif self.domino.split("|")[0] == domino.split("|")[0] or self.domino.split("|")[0] == domino.split("|")[1] or self.domino.split("|")[1] == domino.split("|")[1] or self.domino.split("|")[1] == domino.split("|")[0]:
             self.domino = domino
             return True
         else:
