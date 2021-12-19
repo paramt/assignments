@@ -2,7 +2,6 @@ from os import system
 import sys
 from CloudSave import CloudSave
 from GameBoard import GameBoard
-import Domino
 from PllayerHand import PlayerHand
 
 if __name__ == "__main__":
@@ -66,7 +65,6 @@ if __name__ == "__main__":
                     "Enter the domino you would like to play or 'DRAW': ")
 
                 if domino.upper() == "DRAW":
-                    # Implement drawing from deck
                     current_hand.add_domino(board.draw_domino())
 
                 elif current_hand.contains(domino):
