@@ -5,7 +5,9 @@ import Domino
 from PllayerHand import PlayerHand
 
 if __name__ == "__main__":
-    print("Welcome to Dominos!\n")
+    print("Connecting to scoreboard...", end="\r")
+    save = CloudSave("Dominos Stats", "credentials.json")
+    print("Welcome to Dominos!        \n")
 
     while True:
         print("A) Read the rules")
@@ -20,8 +22,6 @@ if __name__ == "__main__":
             input("Press enter to continue\n")
 
         elif choice.lower() == "b":
-            print("Loading scores...", end="\r")
-            save = CloudSave("Dominos Stats", "credentials.json")
             save.display_scoreboard()
             input("Press enter to continue\n")
 
