@@ -1,13 +1,15 @@
 from os import system
 import sys
+from multiprocessing.pool import ThreadPool
 from CloudSave import CloudSave
 from GameBoard import GameBoard
 from PllayerHand import PlayerHand
 
 if __name__ == "__main__":
-    print("Connecting to scoreboard...", end="\r")
-    save = CloudSave("Dominos Stats", "credentials.json")
-    print("Welcome to Dominos!        \n")
+    # Create CloudSave object in the background
+    save = ThreadPool().apply_async(CloudSave, ("Dominos Stats", "credentials.json"))
+
+    print("Welcome to Dominos!\n")
 
     while True:
         print("A) Read the rules")
@@ -22,7 +24,7 @@ if __name__ == "__main__":
             input("Press enter to continue\n")
 
         elif choice.lower() == "b":
-            save.display_scoreboard()
+            save.get().display_scoreboard()
             input("Press enter to continue\n")
 
         elif choice.lower() == "c":
@@ -76,7 +78,7 @@ if __name__ == "__main__":
                             print(
                                 f"The other player still had {other_hand.size()} dominos left")
 
-                            save.add_win(current_player)
+                            save.get().add_win(current_player)
                             print("The score has been updated")
 
                         elif current_player == 1:
