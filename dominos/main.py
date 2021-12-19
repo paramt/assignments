@@ -6,6 +6,7 @@ from PllayerHand import PlayerHand
 
 if __name__ == "__main__":
     print("Welcome to Dominos!\n")
+
     while True:
         print("A) Read the rules")
         print("B) View the scoreboard")
@@ -52,11 +53,10 @@ if __name__ == "__main__":
                 print("Please pass the screen to player 2, then press enter")
                 input()
 
-            while True:
+            while current_hand.size() > 0:
                 print()
                 print(f"Player {current_player}'s turn: ")
                 print(f"Your hand: {current_hand}")
-
                 print(f"Current domino on the board: {board.domino}")
                 domino = input(
                     "Enter the domino you would like to play or 'DRAW': ")
@@ -68,18 +68,25 @@ if __name__ == "__main__":
                 elif current_hand.contains(domino):
                     if board.place_domino(domino):
                         current_hand.remove_domino(domino)
+                        if current_hand.size() <= 0:
+                            print(
+                                f"Congratulations! Player {current_player} won the game!")
 
-                        if current_player == 1:
+                            save.add_win(current_player)
+                            print("The score has been updated")
+
+                        elif current_player == 1:
                             player1hand = current_hand
                             print(
-                                "Please pass the screen to player 2, then press enter", end="\r")
+                                "Please pass the screen to player 2, then press enter")
                             input()
                             current_player = 2
                             current_hand = player2hand
+
                         elif current_player == 2:
                             player2hand = current_hand
                             print(
-                                "Please pass the screen to player 1, then press enter", end="\r")
+                                "Please pass the screen to player 1, then press enter")
                             input()
                             current_player = 1
                             current_hand = player1hand
