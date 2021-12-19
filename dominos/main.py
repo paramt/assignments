@@ -1,4 +1,5 @@
 from os import system
+import sys
 from CloudSave import CloudSave
 from GameBoard import GameBoard
 import Domino
@@ -103,4 +104,4 @@ if __name__ == "__main__":
                 else:
                     print("You don't have that domino in your hand!")
         else:
-            system.exit(0)
+            sys.exit(0)
