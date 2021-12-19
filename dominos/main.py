@@ -42,6 +42,7 @@ if __name__ == "__main__":
             if compare_hands.get_highest_domino() == domino1:
                 current_player = 1
                 current_hand = player1hand
+                other_hand = player2hand
                 print("Player 1 gets to go first because they have the highest domino")
                 print("Please pass the screen to player 1, then press enter")
                 input()
@@ -49,6 +50,7 @@ if __name__ == "__main__":
             else:
                 current_player = 2
                 current_hand = player2hand
+                other_hand = player1hand
                 print("Player 2 gets to go first because they have the highest domino")
                 print("Please pass the screen to player 2, then press enter")
                 input()
@@ -56,8 +58,9 @@ if __name__ == "__main__":
             while current_hand.size() > 0:
                 print()
                 print(f"Player {current_player}'s turn: ")
-                print(f"Your hand: {current_hand}")
                 print(f"Current domino on the board: {board.domino}")
+                print(f"Your hand: {current_hand}")
+                print(f"Other player has {other_hand.size()} dominos left")
                 domino = input(
                     "Enter the domino you would like to play or 'DRAW': ")
 
@@ -71,6 +74,8 @@ if __name__ == "__main__":
                         if current_hand.size() <= 0:
                             print(
                                 f"Congratulations! Player {current_player} won the game!")
+                            print(
+                                f"The other player still had {other_hand.size()} dominos left")
 
                             save.add_win(current_player)
                             print("The score has been updated")
@@ -82,6 +87,7 @@ if __name__ == "__main__":
                             input()
                             current_player = 2
                             current_hand = player2hand
+                            other_hand = player1hand
 
                         elif current_player == 2:
                             player2hand = current_hand
@@ -90,6 +96,7 @@ if __name__ == "__main__":
                             input()
                             current_player = 1
                             current_hand = player1hand
+                            other_hand = player2hand
                     else:
                         print("You can't place that domino on the board!")
 
