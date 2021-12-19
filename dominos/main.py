@@ -36,7 +36,7 @@ if __name__ == "__main__":
         print()
 
         if choice.lower() == "a":
-            print("Each player will start with 7 dominos. The player with the highest double starts. In the case that no player has a double, the player with the domino that has the highest sum will start. Players will then take turns placing a domino in the center of the board. To place a domino, one of the sides must have a matching number to the center domino in play. If the player doesn't have a domino that meets this requirement, then they must draw another domino from the deck. Play continues until one of the players runs out of dominos.\n")
+            print("Each player will start with 7 dominos. The player with the highest double starts. In the case that no player has a double, the player with the domino that has the highest sum will start. Players will then take turns placing a domino in the center of the board. To place a domino, one of the sides must have a matching number to one of the edge dominos on the board. If the player doesn't have a domino that meets this requirement, then they must draw another domino from the deck. Play continues until one of the players runs out of dominos.\n")
             input("Press enter to continue\n")
 
         elif choice.lower() == "b":
@@ -90,7 +90,7 @@ if __name__ == "__main__":
             while current_hand.size() > 0:
                 print()
                 print(f"{current_player_name}'s turn: ")
-                print(f"Current domino on the board: {board.domino}")
+                print(f"Board: {board}")
                 print(f"Your hand: {current_hand}")
                 print(f"Other player has {other_hand.size()} dominos left")
                 domino = input(
@@ -109,7 +109,7 @@ if __name__ == "__main__":
                                 f"The other player still had {other_hand.size()} dominos left")
 
                             save.get().add_win(current_player)
-                            print("The score has been updated")
+                            print("The score has been updated\n")
 
                         elif current_player == 1:
                             player1hand = current_hand
