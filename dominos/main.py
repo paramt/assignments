@@ -69,7 +69,7 @@ if __name__ == "__main__":
                 if domino.upper() == "DRAW":
                     current_hand.add_domino(board.draw_domino())
 
-                elif current_hand.contains(domino):
+                elif domino in current_hand:
                     if board.place_domino(domino):
                         current_hand.remove_domino(domino)
                         if current_hand.size() <= 0:

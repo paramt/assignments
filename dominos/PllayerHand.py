@@ -18,7 +18,7 @@ class PlayerHand:
         return ", ".join(self.hand)
 
     # Returns true if self.hand contains domino
-    def contains(self, domino):
+    def __contains__(self, domino):
         return domino in self.hand or self._flip_domino(domino) in self.hand
 
     # Returns the highest double in a given hand
