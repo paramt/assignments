@@ -21,6 +21,9 @@ class PlayerHand:
     def __contains__(self, domino):
         return domino in self.hand or self._flip_domino(domino) in self.hand
 
+    def size(self):
+        return len(self.hand)
+
     # Returns the highest double in a given hand
     # If no doubles exist, it returns the domino with the highest sum
     def get_highest_domino(self):
