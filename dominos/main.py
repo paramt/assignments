@@ -52,88 +52,106 @@ if __name__ == "__main__":
             player2 = validate_input("Enter Player 2 name: ",
                                      "^[a-zA-Z ]+$", "Must only contain characters and spaces!")
 
-            validate_input("How many games: ",
-                           "^\d*[13579]$", "Must be an odd number! ")
+            rounds = int(validate_input("How many rounds: ",
+                                        "^\d*[13579]$", "Must be an odd number! "))
 
-            print()
-            print("Setting up the game board...")
-            board = GameBoard()
-            print("Dealing hands...")
+            round_wins = [0, 0]  # Each player starts with 0 round wins
 
-            # Give 7 dominos to each player
-            player1hand = PlayerHand(board.deal_hand(7))
-            player2hand = PlayerHand(board.deal_hand(7))
-            current_hand = []
+            for i in range(1, rounds+1):
+                # Game ends when either player has the minimum number of wins
+                if max(round_wins) > rounds/2:
+                    break
 
-            domino1 = player1hand.get_highest_domino()
-            domino2 = player2hand.get_highest_domino()
-            compare_hands = PlayerHand([domino1, domino2])
-
-            if compare_hands.get_highest_domino() == domino1:
-                current_player = 1
-                current_player_name = player1
-                current_hand = player1hand
-                other_hand = player2hand
-
-            else:
-                current_player = 2
-                current_player_name = player2
-                current_hand = player2hand
-                other_hand = player1hand
-
-            print(
-                f"{current_player_name} gets to go first because they have the highest domino")
-            print(
-                f"Please pass the screen to {current_player_name}, then press enter")
-            input()
-
-            while current_hand.size() > 0:
                 print()
-                print(f"{current_player_name}'s turn: ")
-                print(f"Board: {board}")
-                print(f"Your hand: {current_hand}")
-                print(f"Other player has {other_hand.size()} dominos left")
-                domino = input(
-                    "Enter the domino you would like to play or 'DRAW': ")
+                print(f"-----------------Round #{i}-----------------")
+                print("Setting up the game board...")
+                board = GameBoard()
+                print("Dealing hands...")
 
-                if domino.upper() == "DRAW":
-                    current_hand.add_domino(board.draw_domino())
+                # Give 7 dominos to each player
+                player1hand = PlayerHand(board.deal_hand(1))
+                player2hand = PlayerHand(board.deal_hand(1))
+                current_hand = []
 
-                elif domino in current_hand:
-                    if board.place_domino(domino):
-                        current_hand.remove_domino(domino)
-                        if current_hand.size() <= 0:
-                            print(
-                                f"Congratulations! {current_player_name} won the game!")
-                            print(
-                                f"The other player still had {other_hand.size()} dominos left")
+                domino1 = player1hand.get_highest_domino()
+                domino2 = player2hand.get_highest_domino()
+                compare_hands = PlayerHand([domino1, domino2])
 
-                            save.get().add_win(current_player)
-                            print("The score has been updated\n")
-
-                        elif current_player == 1:
-                            player1hand = current_hand
-                            print(
-                                f"Please pass the screen to {player2}, then press enter")
-                            input()
-                            current_player = 2
-                            current_player_name = player2
-                            current_hand = player2hand
-                            other_hand = player1hand
-
-                        elif current_player == 2:
-                            player2hand = current_hand
-                            print(
-                                f"Please pass the screen to {player1}, then press enter")
-                            input()
-                            current_player = 1
-                            current_player_name = player1
-                            current_hand = player1hand
-                            other_hand = player2hand
-                    else:
-                        print("You can't place that domino on the board!")
+                if compare_hands.get_highest_domino() == domino1:
+                    current_player = 1
+                    current_player_name = player1
+                    current_hand = player1hand
+                    other_hand = player2hand
 
                 else:
-                    print("You don't have that domino in your hand!")
+                    current_player = 2
+                    current_player_name = player2
+                    current_hand = player2hand
+                    other_hand = player1hand
+
+                print(
+                    f"{current_player_name} gets to go first because they have the highest domino")
+                print(
+                    f"Please pass the screen to {current_player_name}, then press enter")
+                input()
+
+                while current_hand.size() > 0:
+                    print()
+                    print(f"{current_player_name}'s turn: ")
+                    print(f"Board: {board}")
+                    print(f"Your hand: {current_hand}")
+                    print(f"Other player has {other_hand.size()} dominos left")
+                    domino = input(
+                        "Enter the domino you would like to play or 'DRAW': ")
+
+                    if domino.upper() == "DRAW":
+                        current_hand.add_domino(board.draw_domino())
+
+                    elif domino in current_hand:
+                        if board.place_domino(domino):
+                            current_hand.remove_domino(domino)
+                            if current_hand.size() <= 0:
+                                print(
+                                    f"\nCongratulations! {current_player_name} won round #{i}!")
+                                print(
+                                    f"The other player still had {other_hand.size()} dominos left")
+
+                                round_wins[current_player-1] += 1
+                                input("Press enter to continue\n")
+
+                            elif current_player == 1:
+                                player1hand = current_hand
+                                print(
+                                    f"Please pass the screen to {player2}, then press enter")
+                                input()
+                                current_player = 2
+                                current_player_name = player2
+                                current_hand = player2hand
+                                other_hand = player1hand
+
+                            elif current_player == 2:
+                                player2hand = current_hand
+                                print(
+                                    f"Please pass the screen to {player1}, then press enter")
+                                input()
+                                current_player = 1
+                                current_player_name = player1
+                                current_hand = player1hand
+                                other_hand = player2hand
+                        else:
+                            print("You can't place that domino on the board!")
+
+                    else:
+                        print("You don't have that domino in your hand!")
+
+            if round_wins[0] > round_wins[1]:
+                print(f"{player1} won the game with {round_wins[0]} wins!")
+                save.get().add_win(1)
+            else:
+                print(f"{player2} won the game with {round_wins[1]} wins!")
+                save.get().add_win(2)
+
+            print("The score has been updated\n")
+            input("Press enter to continue\n")
         else:
             sys.exit(0)
