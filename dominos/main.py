@@ -4,7 +4,7 @@ import re
 from multiprocessing.pool import ThreadPool
 from CloudSave import CloudSave
 from GameBoard import GameBoard
-from PllayerHand import PlayerHand
+from PlayerHand import PlayerHand
 
 
 def validate_input(message, regex, error_msg=None):
