@@ -1,25 +1,28 @@
 ---
 permalink: /404.html
-enable_nokogiri: true
 ---
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Page not found</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.param.me/assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% include favicon.html %}
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://www.param.me/styles/404.css" rel="stylesheet" />
   </head>
 
   <body>
-    <div id="transition-overlay" style="opacity:0;"></div>
-
-    <div id="error" class="container">
-      <h1 style="font-size:11em">404</h1>
-      <h2>Page not found</h2>
-      <div>
-        <button onclick="window.location = '/assignments'" style="padding:20px"><p>Go Back to Assignments</p></button>
-      </div>
+    <div id="error" style="visibility: visible">
+      <h1>Whoops!</h1>
+      <h2>That page doesn't exist</h2>
+      <br />
+      <a href="/assignments"> Go Back to Assignments </a>
     </div>
   </body>
 </html>
