@@ -49,4 +49,7 @@ class PlayerHand:
             return highest_non_double_domino
 
     def _flip_domino(self, domino):
-        return domino.split("|")[1] + "|" + domino.split("|")[0]
+        try:
+            return domino.split("|")[1] + "|" + domino.split("|")[0]
+        except IndexError:
+            return False
