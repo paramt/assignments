@@ -1,7 +1,6 @@
 from os import system
 import sys
 import re
-from multiprocessing.pool import ThreadPool
 from CloudSave import CloudSave
 from GameBoard import GameBoard
 from PlayerHand import PlayerHand
@@ -23,7 +22,8 @@ def validate_input(message, regex, error_msg=None):
 
 if __name__ == "__main__":
     # Create CloudSave object in the background
-    save = ThreadPool().apply_async(CloudSave, ("Dominos Stats", "credentials.json"))
+    print("Loading scores...")
+    save = CloudSave("Dominos Stats", "credentials.json")
 
     print("Welcome to Dominos!\n")
 
@@ -40,7 +40,7 @@ if __name__ == "__main__":
             input("Press enter to continue\n")
 
         elif choice.lower() == "b":
-            save.get().display_scoreboard()
+            save.display_scoreboard()
             input("Press enter to continue\n")
 
         elif choice.lower() == "c":
@@ -146,10 +146,10 @@ if __name__ == "__main__":
 
             if round_wins[0] > round_wins[1]:
                 print(f"{player1} won the game with {round_wins[0]} wins!")
-                save.get().add_win(1)
+                save.add_win(1)
             else:
                 print(f"{player2} won the game with {round_wins[1]} wins!")
-                save.get().add_win(2)
+                save.add_win(2)
 
             print("The score has been updated\n")
             input("Press enter to continue\n")
