@@ -1,6 +1,3 @@
-from Domino import Domino
-
-
 class PlayerHand:
     def __init__(self, dominos=[]):
         self.hand = dominos

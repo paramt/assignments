@@ -1,10 +1,9 @@
 from random import randrange
-from Domino import Domino, generate_deck
 
 
 class GameBoard:
     def __init__(self):
-        self.deck = generate_deck()
+        self.deck = self._generate_deck()
         self.dominos = []
 
     # Removes a random domino from the deck and returns it
@@ -48,3 +47,18 @@ class GameBoard:
 
     def _flip_domino(self, domino):
         return domino.split("|")[1] + "|" + domino.split("|")[0]
+
+    def _generate_deck(self):
+        output = []
+        counter = 0
+
+        for i in range(12, -1, -1):
+            second_dice = 12 - counter
+
+            for j in range(counter+1):
+                dice = str(second_dice) + '|' + str(i)
+                output.append(dice)
+                second_dice += 1
+            counter += 1
+
+        return output
