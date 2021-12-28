@@ -105,34 +105,35 @@ if __name__ == "__main__":
                         "Enter the domino you would like to play or 'DRAW': ")
 
                     if domino.upper() == "DRAW":
-                        domino = board.draw_domino()
+                        new_domino = board.draw_domino()
 
-                        if board.place_domino(domino):
+                        if board.place_domino(new_domino):
                             print(
-                                f"Domino {domino} was automatically placed on the board")
-
-                            if current_player == 1:
-                                player1hand = current_hand
-                                print(
-                                    f"Please pass the screen to {player2}, then press enter")
-                                input()
-                                current_player = 2
-                                current_player_name = player2
-                                current_hand = player2hand
-                                other_hand = player1hand
-
-                            elif current_player == 2:
-                                player2hand = current_hand
-                                print(
-                                    f"Please pass the screen to {player1}, then press enter")
-                                input()
-                                current_player = 1
-                                current_player_name = player1
-                                current_hand = player1hand
-                                other_hand = player2hand
+                                f"Domino {new_domino} was drawn and automatically placed on the board")
                         else:
                             current_hand.add_domino(domino)
-                            print(f"{domino} was added to your hand")
+                            print(
+                                f"{domino} was added to your hand. Cannot play domino")
+
+                        if current_player == 1:
+                            player1hand = current_hand
+                            print(
+                                f"Please pass the screen to {player2}, then press enter")
+                            input()
+                            current_player = 2
+                            current_player_name = player2
+                            current_hand = player2hand
+                            other_hand = player1hand
+
+                        elif current_player == 2:
+                            player2hand = current_hand
+                            print(
+                                f"Please pass the screen to {player1}, then press enter")
+                            input()
+                            current_player = 1
+                            current_player_name = player1
+                            current_hand = player1hand
+                            other_hand = player2hand
 
                     elif domino in current_hand:
                         if board.place_domino(domino):
