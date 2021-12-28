@@ -1,5 +1,6 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import sys
 
 
 class CloudSave:
@@ -11,8 +12,9 @@ class CloudSave:
                 credentials_file, scope)
             gc = gspread.authorize(credentials)
         except OSError as e:
-            print("JSON file with Google account credentials not found!")
-            exit(1)
+            print("JSON file with Google account credentials not found!\
+                \nPlease make sure credentials.json exists in the root directory")
+            sys.exit(1)
 
         self.datasheet = gc.open(sheet).worksheet("data")  # Open google sheet
         self._update()
