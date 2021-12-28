@@ -50,15 +50,19 @@ class CloudSave:
         self.datasheet.update("E2", 0)
         self._update()
 
-    def display_scoreboard(self):
-        print("Go to go.param.me/score to view the full scoreboard! Here's a summary:")
-        print(f"Total games played: {self.total_games}")
-        print(f"Player 1 wins: {self.p1_data['wins']}")
-        print(f"Player 2 wins: {self.p2_data['wins']}")
-        print()
+    def display_info(self, choice):
+        if choice == 0:
+            print(f"Total games played: {self.total_games}")
+        elif choice == 1:
+            print(f"Player 1 Wins: {self.p1_data['wins']}")
+            print(f"Current winstreak : {self.p1_data['current_win_streak']}")
+            print(f"Longest winstreak : {self.p1_data['longest_win_streak']}")
+        elif choice == 2:
+            print(f"Player 2 Wins: {self.p2_data['wins']}")
+            print(f"Current winstreak : {self.p2_data['current_win_streak']}")
+            print(f"Longest winstreak : {self.p2_data['longest_win_streak']}")
 
     # Load stats from google sheet
-
     def _update(self):
         self.total_games = int(self.datasheet.cell(2, 5).value)
         self.p1_data = {"wins": int(self.datasheet.cell(6, 5).value),

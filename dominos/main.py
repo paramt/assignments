@@ -40,8 +40,18 @@ if __name__ == "__main__":
             input("Press enter to continue\n")
 
         elif choice.lower() == "b":
-            save.display_scoreboard()
-            input("Press enter to continue\n")
+            print("Go to go.param.me/score for the full scoreboard! Here's a summary")
+            print("0) Total games played")
+            print("1) Player 1 Wins")
+            print("2) Player 2 Wins")
+            print("3) Back to main menu")
+
+            while True:
+                choice2 = int(validate_input(
+                    "\nEnter which statistic you would like to see: ", "[0-3]", "Please make a valid selection or \"3\" to return to the main menu!"))
+                if choice2 == 3:
+                    break
+                save.display_info(choice2)
 
         elif choice.lower() == "c":
             validate_input("How many players: ", "^2$", "Must be 2!")
@@ -111,9 +121,9 @@ if __name__ == "__main__":
                             print(
                                 f"Domino {new_domino} was drawn and automatically placed on the board")
                         else:
-                            current_hand.add_domino(domino)
+                            current_hand.add_domino(new_domino)
                             print(
-                                f"{domino} was added to your hand. Cannot play domino")
+                                f"{new_domino} was added to your hand. Cannot play domino")
 
                         if current_player == 1:
                             player1hand = current_hand
