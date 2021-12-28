@@ -7,6 +7,7 @@ class PlayerHand:
 
     def add_domino(self, domino):
         self.hand.append(domino)
+        return domino
 
     def remove_domino(self, domino):
         if domino in self.hand:
