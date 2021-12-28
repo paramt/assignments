@@ -21,7 +21,6 @@ def validate_input(message, regex, error_msg=None):
 
 
 if __name__ == "__main__":
-    # Create CloudSave object in the background
     print("Loading scores...")
     save = CloudSave("Dominos Stats", "credentials.json")
 
@@ -83,6 +82,7 @@ if __name__ == "__main__":
                 player2hand = PlayerHand(board.deal_hand(7))
                 current_hand = []
 
+                # Choose which player goes first
                 domino1 = player1hand.get_highest_domino()
                 domino2 = player2hand.get_highest_domino()
                 compare_hands = PlayerHand([domino1, domino2])
@@ -125,6 +125,7 @@ if __name__ == "__main__":
                             print(
                                 f"{new_domino} was added to your hand. Cannot play domino")
 
+                        # Switch turn
                         if current_player == 1:
                             player1hand = current_hand
                             print(
@@ -148,6 +149,8 @@ if __name__ == "__main__":
                     elif domino in current_hand:
                         if board.place_domino(domino):
                             current_hand.remove_domino(domino)
+
+                            # Win condition
                             if current_hand.size() <= 0:
                                 print(
                                     f"\nCongratulations! {current_player_name} won round #{i}!")
@@ -157,6 +160,7 @@ if __name__ == "__main__":
                                 round_wins[current_player-1] += 1
                                 input("Press enter to continue\n")
 
+                            # Switch turn
                             elif current_player == 1:
                                 player1hand = current_hand
                                 print(
