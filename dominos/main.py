@@ -108,8 +108,9 @@ if __name__ == "__main__":
                 domino1 = player1hand.get_highest_domino()
                 domino2 = player2hand.get_highest_domino()
                 compare_hands = PlayerHand([domino1, domino2])
+                first_domino = compare_hands.get_highest_domino()
 
-                if compare_hands.get_highest_domino() == domino1:
+                if first_domino == domino1:
                     current_player = 1
                     current_player_name = player1
                     current_hand = player1hand
@@ -126,6 +127,32 @@ if __name__ == "__main__":
                 print(
                     f"Please pass the screen to {current_player_name}, then press enter")
                 input()
+
+                print(
+                    f"Placing {first_domino} on the board")
+                board.place_domino(first_domino)
+                current_hand.remove_domino(first_domino)
+
+                # Switch turn
+                if current_player == 1:
+                    player1hand = current_hand
+                    print(
+                        f"Please pass the screen to {player2}, then press enter")
+                    input()
+                    current_player = 2
+                    current_player_name = player2
+                    current_hand = player2hand
+                    other_hand = player1hand
+
+                elif current_player == 2:
+                    player2hand = current_hand
+                    print(
+                        f"Please pass the screen to {player1}, then press enter")
+                    input()
+                    current_player = 1
+                    current_player_name = player1
+                    current_hand = player1hand
+                    other_hand = player2hand
 
                 while current_hand.size() > 0:
                     print()
