@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
             while True:
                 choice2 = int(validate_input(
-                    "\nEnter which statistic you would like to see: ", "[0-3]", "Please make a valid selection or \"3\" to return to the main menu!"))
+                    "\nEnter which statistic you would like to see: ", "^[0-3]$", "Please make a valid selection or \"3\" to return to the main menu!"))
                 if choice2 == 3:
                     break
                 save.display_info(choice2)
@@ -75,11 +75,33 @@ if __name__ == "__main__":
                 print(f"-----------------Round #{i}-----------------")
                 print("Setting up the game board...")
                 board = GameBoard()
-                print("Dealing hands...")
 
-                # Give 7 dominos to each player
+                print(f"1) {player1} draw your dominos")
+                print(f"2) {player2} draw your dominos")
+
+                choice3 = int(validate_input(
+                    "Make your selection: ", "^[1-2]$", "Enter a valid selection!"))
+
                 player1hand = PlayerHand(board.deal_hand(7))
                 player2hand = PlayerHand(board.deal_hand(7))
+                print()
+
+                if choice3 == 1:
+                    print(f"Delt {player1}'s hand:")
+                    print(player1hand)
+
+                    input(f"\nPass the screen to {player2} then press enter")
+                    print(f"Delt {player2}'s hand:")
+                    print(player2hand)
+
+                elif choice3 == 2:
+                    print(f"Delt {player2}'s hand:")
+                    print(player2hand)
+
+                    input(f"\nPass the screen to {player1} then press enter")
+                    print(f"Delt {player1}'s hand:")
+                    print(player1hand)
+
                 current_hand = []
 
                 # Choose which player goes first
@@ -100,7 +122,7 @@ if __name__ == "__main__":
                     other_hand = player1hand
 
                 print(
-                    f"{current_player_name} gets to go first because they have the highest domino")
+                    f"\n{current_player_name} gets to go first because they have the highest domino")
                 print(
                     f"Please pass the screen to {current_player_name}, then press enter")
                 input()
