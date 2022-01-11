@@ -1,10 +1,11 @@
 from random import randrange
+from Deque import Deque
 
 
 class GameBoard:
     def __init__(self):
         self.deck = self._generate_deck()
-        self.dominos = []
+        self.dominos = Deque()
 
     # Removes a random domino from the deck and returns it
     def draw_domino(self):
@@ -13,20 +14,20 @@ class GameBoard:
     # Places domino on the board and returns true if it is playable
     # Otherwise doesn't do anything and returns false
     def place_domino(self, domino):
-        if not self.dominos:
-            self.dominos.append(domino)
+        if self.dominos.is_empty():
+            self.dominos.add_front(domino)
 
-        elif self.dominos[0].split("|")[0] == domino.split("|")[1]:
-            self.dominos.insert(0, domino)
+        elif self.dominos.get(0).split("|")[0] == domino.split("|")[1]:
+            self.dominos.add_rear(domino)
 
-        elif self.dominos[-1].split("|")[1] == domino.split("|")[0]:
-            self.dominos.append(domino)
+        elif self.dominos.get(-1).split("|")[1] == domino.split("|")[0]:
+            self.dominos.add_front(domino)
 
-        elif self.dominos[0].split("|")[0] == domino.split("|")[0]:
-            self.dominos.insert(0, self._flip_domino(domino))
+        elif self.dominos.get(0).split("|")[0] == domino.split("|")[0]:
+            self.dominos.add_rear(self._flip_domino(domino))
 
-        elif self.dominos[-1].split("|")[1] == domino.split("|")[1]:
-            self.dominos.append(self._flip_domino(domino))
+        elif self.dominos.get(-1).split("|")[1] == domino.split("|")[1]:
+            self.dominos.add_front(self._flip_domino(domino))
 
         else:
             return False
@@ -43,7 +44,7 @@ class GameBoard:
         return hand
 
     def __str__(self):
-        return "  ".join(self.dominos)
+        return self.dominos.pprint()
 
     def _flip_domino(self, domino):
         return domino.split("|")[1] + "|" + domino.split("|")[0]
